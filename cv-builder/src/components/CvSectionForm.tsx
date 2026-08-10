@@ -26,7 +26,7 @@ export default function CvSectionForm({ section, value, onChange }: Props) {
     }
 
     return (
-      <div className="rounded-lg border border-black/10 bg-white p-5">
+      <div className="rounded-lg border border-black/10 bg-[#F4F4F5] p-5">
         <h3 className="font-semibold">{section.title}</h3>
         <p className="mt-1 text-xs text-neutral-500">{section.guidance}</p>
         <div className="mt-4 flex flex-col gap-4">
@@ -102,7 +102,7 @@ function FieldInput({
           value={value}
           placeholder={field.type === "list" ? "One item per line" : field.placeholder}
           onChange={(e) => onChange(e.target.value)}
-          className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 text-sm"
+          className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm focus:border-blue-600 focus:outline-none"
         />
       ) : (
         <input
@@ -110,7 +110,7 @@ function FieldInput({
           value={value}
           placeholder={field.placeholder}
           onChange={(e) => onChange(e.target.value)}
-          className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 text-sm"
+          className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm focus:border-blue-600 focus:outline-none"
         />
       )}
     </div>

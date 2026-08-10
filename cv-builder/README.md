@@ -1,5 +1,7 @@
 # CV Builder
 
+**Live: [cv-maker-7pxy.onrender.com](https://cv-maker-7pxy.onrender.com)**
+
 A Next.js + Firebase app for building CVs from 30 guided, field-specific templates, with PDF export capped at 5/day per user.
 
 ## What's built
@@ -47,7 +49,11 @@ Visit http://localhost:3000. Sign up, pick a template, fill it in, and export �
 
 ## 3. Deploy
 
-Easiest path: push this repo to GitHub and import it on [Vercel](https://vercel.com) (free tier). Add the same `NEXT_PUBLIC_FIREBASE_*` variables in Vercel's Project Settings → Environment Variables, then deploy.
+Deployed on [Render](https://render.com) (free Web Service tier) at **https://cv-maker-7pxy.onrender.com**, auto-deploying on every push to `main`. Root directory is `cv-builder` since the repo nests the app in a subfolder; build command `npm install && npm run build`, start command `npm run start`; env vars (Firebase + Cloudinary) are set in the service's Environment tab.
+
+Alternative: push this repo to GitHub and import it on [Vercel](https://vercel.com) (free tier) — set the project's Root Directory to `cv-builder` and add the same `NEXT_PUBLIC_FIREBASE_*` / Cloudinary variables in Vercel's Project Settings → Environment Variables.
+
+Note: the free Render tier spins down on inactivity — the first request after idle can take 50+ seconds.
 
 ## Notes & next steps
 

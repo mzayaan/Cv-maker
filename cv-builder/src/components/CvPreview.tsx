@@ -14,7 +14,7 @@ export default function CvPreview({ template, content }: Props) {
   const contact = (content.contact as Record<string, string>) || {};
 
   return (
-    <div id="cv-preview" className="mx-auto w-full max-w-[210mm] bg-white p-10 text-neutral-900 shadow-sm">
+    <div id="cv-preview" className="mx-auto w-full max-w-[210mm] bg-white p-10 text-neutral-900 shadow-lg">
       <header className="border-b-2 pb-3" style={{ borderColor: accentHex(template.accentColor) }}>
         <h1 className="text-2xl font-bold">{contact.fullName || "Your Name"}</h1>
         <p className="mt-1 text-sm text-neutral-600">

@@ -76,11 +76,8 @@ export default function BuilderPage({ params }: { params: Promise<{ cvId: string
     setExportError(null);
     setExporting(true);
     try {
-      const nextQuota = await consumeExportCredit(user.uid);
-      setQuota(nextQuota);
-
       const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
-        import("html2canvas"),
+        import("html2canvas-pro"),
         import("jspdf"),
       ]);
       const node = document.getElementById("cv-preview");
@@ -91,6 +88,12 @@ export default function BuilderPage({ params }: { params: Promise<{ cvId: string
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = (canvas.height * pageWidth) / canvas.width;
       pdf.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight);
+
+      // Consume the credit only once the PDF is actually ready, so a
+      // rendering failure doesn't burn part of the daily quota.
+      const nextQuota = await consumeExportCredit(user.uid);
+      setQuota(nextQuota);
+
       pdf.save(`${title || "cv"}.pdf`);
     } catch (err) {
       if (err instanceof Error && err.message === "DAILY_LIMIT_REACHED") {
